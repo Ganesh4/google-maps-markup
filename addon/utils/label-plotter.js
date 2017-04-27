@@ -8,7 +8,7 @@ const {
   computeDistanceBetween
 } = google.maps.geometry.spherical;
 
-export default function labelPlotter(label, points, type, event, map) {
+export default function labelPlotter(label, points, type, event, map, distanceUnit) {
   if (type === 'circle') {
     label.position = points[0];
   }
@@ -22,7 +22,7 @@ export default function labelPlotter(label, points, type, event, map) {
           if (points.length === 2) {
             let radius = computeDistanceBetween(points[0], points[1]);
             let area = Math.PI * (radius * radius);
-            let result = measureTypeResult(type, area);
+            let result = measureTypeResult(type, area, distanceUnit);
             label.label = `${result.value} ${result.unit}`;
             label.setMap(map);
           }
@@ -33,7 +33,7 @@ export default function labelPlotter(label, points, type, event, map) {
           if (points.length >= 2) {
             let bounds = pathsToBounds(points);
             let distance = pathDistance(points);
-            let result = measureTypeResult(type, distance);
+            let result = measureTypeResult(type, distance, distanceUnit);
             label.label = `${result.value} ${result.unit}`;
             label.position = bounds.getCenter();
             label.setMap(map);
@@ -51,7 +51,7 @@ export default function labelPlotter(label, points, type, event, map) {
             ];
             let bounds = pathsToBounds(calcPoints);
             let area = computeArea(calcPoints);
-            let result = measureTypeResult(type, area);
+            let result = measureTypeResult(type, area, distanceUnit);
             label.label = `${result.value} ${result.unit}`;
             label.position = bounds.getCenter();
             label.setMap(map);
@@ -71,7 +71,7 @@ export default function labelPlotter(label, points, type, event, map) {
           if (points.length > 1) {
             let bounds = pathsToBounds(points);
             let area = computeArea(points);
-            let result = measureTypeResult(type, area);
+            let result = measureTypeResult(type, area, distanceUnit);
             label.label = `${result.value} ${result.unit}`;
             label.position = bounds.getCenter();
             label.setMap(map);

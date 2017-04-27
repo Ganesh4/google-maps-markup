@@ -48,11 +48,26 @@ export default {
     name: 'Line',
     title: 'Multi segmented line tool',
     options: [
+      { name: 'Distance Unit', type: 'distanceUnit', id: 'distanceUnit' },
       { name: 'Color', type: 'color', id: 'style.strokeColor' }
     ],
     style: {
       strokeColor: '#374046'
-    }
+    },
+    distanceUnits: [{
+      id: 'ft',
+      display: 'Feet'
+    }, {
+      id: 'meter',
+      display: 'Meters'
+    }, {
+      id: 'mi',
+      display: 'Miles'
+    }, {
+      id: 'km',
+      display: 'Kilometers'
+    }],
+    distanceUnit: 'ft',
   },
   polygon: {
     id: 'polygon',
@@ -60,6 +75,7 @@ export default {
     name: 'Polygon',
     title: 'Polygon Tool',
     options: [
+      { name: 'Area Unit', type: 'distanceUnit', id: 'distanceUnit' },
       { name: 'Fill Color', type: 'color', id: 'style.fillColor', isCheckbox: true },
       { name: 'Stroke Color', type: 'color', id: 'style.strokeColor' }
     ],
@@ -68,6 +84,20 @@ export default {
       fillColor: '#374046'
     },
     fillColorChecked: true,
+    distanceUnits: [{
+      id: 'sq ft',
+      display: 'Sq Ft'
+    }, {
+      id: 'acres',
+      display: 'Acres'
+    }, {
+      id: 'sq mi',
+      display: 'Sq Miles'
+    }, {
+      id: 'sq km',
+      display: 'Sq Km'
+    }],
+    distanceUnit: 'sq ft',
   },
   freeFormPolygon: {
     id: 'freeFormPolygon',
@@ -88,6 +118,7 @@ export default {
     name: 'Circle',
     title: 'Circle Tool',
     options: [
+      { name: 'Area Unit', type: 'distanceUnit', id: 'distanceUnit' },
       { name: 'Fill Color', type: 'color', id: 'style.fillColor', isCheckbox: true },
       { name: 'Stroke Color', type: 'color', id: 'style.strokeColor' }
     ],
@@ -96,6 +127,20 @@ export default {
       fillColor: '#374046'
     },
     fillColorChecked: true,
+    distanceUnits: [{
+      id: 'sq ft',
+      display: 'Sq Ft'
+    }, {
+      id: 'acres',
+      display: 'Acres'
+    }, {
+      id: 'sq mi',
+      display: 'Sq Miles'
+    }, {
+      id: 'sq km',
+      display: 'Sq Km'
+    }],
+    distanceUnit: 'sq ft',
   },
   rectangle: {
     id: 'rectangle',
@@ -103,6 +148,7 @@ export default {
     name: 'Rectangle',
     title: 'Rectangle Tool',
     options: [
+      { name: 'Area Unit', type: 'distanceUnit', id: 'distanceUnit' },
       { name: 'Fill Color', type: 'color', id: 'style.fillColor', isCheckbox: true },
       { name: 'Stroke Color', type: 'color', id: 'style.strokeColor' }
     ],
@@ -111,5 +157,19 @@ export default {
       fillColor: '#374046'
     },
     fillColorChecked: true,
+    distanceUnits: [{
+      id: 'sq ft',
+      display: 'Sq Ft'
+    }, {
+      id: 'acres',
+      display: 'Acres'
+    }, {
+      id: 'sq mi',
+      display: 'Sq Miles'
+    }, {
+      id: 'sq km',
+      display: 'Sq Km'
+    }],
+    distanceUnit: 'sq ft',
   }
 };

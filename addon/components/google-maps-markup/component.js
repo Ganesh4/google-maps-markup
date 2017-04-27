@@ -211,6 +211,10 @@ export default Ember.Component.extend(ParentMixin, {
       set(this.activeTool, 'icon', icon);
     },
 
+    updateDistanceUnit(distanceUnit) {
+      set(this.activeTool, 'distanceUnit', distanceUnit);
+    },
+
     changeMode(mode) {
       this.set('mode', mode.id);
     },
@@ -624,7 +628,8 @@ export default Ember.Component.extend(ParentMixin, {
           isVisible: true,
           type: toolId,
           name: tool.name,
-          feature: event.feature
+          feature: event.feature,
+          distanceUnit: tool.distanceUnit,
         };
 
         if (item.style) {
@@ -706,22 +711,26 @@ export default Ember.Component.extend(ParentMixin, {
       let onClick = run.bind(this, (event) => {
         let activeLayer = this.get('activeLayer');
         let toolId = this.get('toolId');
-        let tool = this.getTool(toolId);
+        let tool = this.get('activeTool');
         let mode = this.get('mode');
         let mapDiv = map.getDiv();
         let target = event.target;
         let withinMap = mapDiv.contains(target);
+
         let results = this.get('results');
+        let length = results.get('length');
+        let arrayIndexOffSet = 1;
+        let lastObjectIndex = length - arrayIndexOffSet;
+        let data = results.get('lastObject');
+
+        if (data) {
+          data.distanceUnit = tool.distanceUnit;
+        }
 
         if (mode === 'draw') {
           if (withinMap && toolId === 'freeFormPolygon') {
             this.enableFreeFormPolygon();
           } else if (withinMap && toolId === 'marker') {
-            let length = results.get('length');
-            let arrayIndexOffSet = 1;
-            let lastObjectIndex = length - arrayIndexOffSet;
-            let data = results.get('lastObject');
-
             let iconObj = tool.icons.find(function(iconObj){
               return iconObj.id === tool.icon;
             });
@@ -770,7 +779,7 @@ export default Ember.Component.extend(ParentMixin, {
         if (withinMap && noPoints && !drawFinished) {
           let latlng = calculateLatLng(map, event);
           currentPoints.push(latlng);
-          plotter = labelPlotter(currentLabel, currentPoints, toolId, event, map);
+          plotter = labelPlotter(currentLabel, currentPoints, toolId, event, map, tool.distanceUnit);
         } else if (withinMap && !toolIsPan && !drawFinished) {
           let latlng = calculateLatLng(map, event);
           currentPoints.push(latlng);
