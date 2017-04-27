@@ -1,5 +1,3 @@
-const ACRE = 2.29568e-5;
-
 export default function acres(result) {
   var output = {};
   var SQUARE_FEET_AREA_CONVERT_MAP = {

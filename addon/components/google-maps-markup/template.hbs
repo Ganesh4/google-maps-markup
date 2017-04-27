@@ -67,6 +67,18 @@
           </select>
         </div>
       {{/if}}
+      {{#if (is-equal opt.type 'size')}}
+        <div class="form-group">
+          <div><label>{{opt.name}}</label></div>
+          <select onchange={{action "updateFontSize" value="target.value" }}>
+            {{#each activeTool.fontSizes as |fontSize|}}
+              <option value={{fontSize}} selected={{is-equal fontSize activeTool.style.fontSize}}>
+                  {{fontSize}}
+              </option>
+            {{/each}}
+          </select>
+        </div>
+      {{/if}}
     {{/each}}
     </form>
   {{/if}}
