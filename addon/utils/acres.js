@@ -1,11 +1,20 @@
-const ACRE = 2.29568e-5;
+
 
 export default function acres(result) {
   var output = {};
 
-  if (result.value > 43560) {
-    output.value = result.value * ACRE;
-    output.unit = 'ac.';
+  var ACRE_TO_CONVERT_MAP = {
+    sft: 43560,
+    smi: 0.0015625,
+    skm: 0.00404686
+  };
+
+  if(result.unit === 'acr') {
+    output.value = Math.round(result.value);
+    output.unit = result.unit;
+  } else {
+    output.value = result.value * ACRE_TO_CONVERT_MAP[result.unit];
+    output.unit = result.unit;
 
     if (output.value < 1) {
       // 4 decimal places
@@ -16,9 +25,6 @@ export default function acres(result) {
     } else {
       output.value = Math.round(output.value);
     }
-  } else {
-    output.value = Math.round(result.value);
-    output.unit = result.unit;
   }
 
   output.measurementType = result.measurementType;

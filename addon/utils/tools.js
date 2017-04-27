@@ -73,7 +73,8 @@ export default {
     style: {
       strokeColor: '#374046',
       fillColor: '#374046'
-    }
+    },
+
   },
   circle: {
     id: 'circle',
@@ -81,13 +82,28 @@ export default {
     name: 'Circle',
     title: 'Circle Tool',
     options: [
+      { name: 'Area Unit', type: 'distanceUnit', id: 'areaUnit' },
       { name: 'Fill Color', type: 'color', id: 'style.fillColor' },
       { name: 'Stroke Color', type: 'color', id: 'style.strokeColor' }
     ],
     style: {
       strokeColor: '#374046',
       fillColor: '#374046'
-    }
+    },
+    distanceUnits: [{
+      id: 'acr',
+      display: 'Acres'
+    }, {
+      id: 'sft',
+      display: 'Sq Ft'
+    }, {
+      id: 'smi',
+      display: 'Sq Miles'
+    }, {
+      id: 'skm',
+      display: 'Sq Km'
+    }],
+    distanceUnit: 'acr',
   },
   rectangle: {
     id: 'rectangle',
