@@ -215,6 +215,16 @@ export default Ember.Component.extend(ParentMixin, {
       this.set('mode', mode.id);
     },
 
+    fillColorChecked() {
+      set(this.activeTool, 'fillColorChecked', ! this.activeTool.fillColorChecked)
+
+      if (this.activeTool.fillColorChecked) {
+        set(this.activeTool, 'style.fillOpacity', 0.5);
+      } else {
+        set(this.activeTool, 'style.fillOpacity', 0);
+      }
+    },
+
     changeTool(toolId) {
       this.resetAllLayers();
       this.clearListeners();

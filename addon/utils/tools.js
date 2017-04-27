@@ -60,13 +60,14 @@ export default {
     name: 'Polygon',
     title: 'Polygon Tool',
     options: [
-      { name: 'Fill Color', type: 'color', id: 'style.fillColor' },
+      { name: 'Fill Color', type: 'color', id: 'style.fillColor', isCheckbox: true },
       { name: 'Stroke Color', type: 'color', id: 'style.strokeColor' }
     ],
     style: {
       strokeColor: '#374046',
       fillColor: '#374046'
-    }
+    },
+    fillColorChecked: true,
   },
   freeFormPolygon: {
     id: 'freeFormPolygon',
@@ -87,13 +88,14 @@ export default {
     name: 'Circle',
     title: 'Circle Tool',
     options: [
-      { name: 'Fill Color', type: 'color', id: 'style.fillColor' },
+      { name: 'Fill Color', type: 'color', id: 'style.fillColor', isCheckbox: true },
       { name: 'Stroke Color', type: 'color', id: 'style.strokeColor' }
     ],
     style: {
       strokeColor: '#374046',
       fillColor: '#374046'
-    }
+    },
+    fillColorChecked: true,
   },
   rectangle: {
     id: 'rectangle',
@@ -101,12 +103,13 @@ export default {
     name: 'Rectangle',
     title: 'Rectangle Tool',
     options: [
-      { name: 'Fill Color', type: 'color', id: 'style.fillColor' },
+      { name: 'Fill Color', type: 'color', id: 'style.fillColor', isCheckbox: true },
       { name: 'Stroke Color', type: 'color', id: 'style.strokeColor' }
     ],
     style: {
       strokeColor: '#374046',
       fillColor: '#374046'
-    }
+    },
+    fillColorChecked: true,
   }
 };
